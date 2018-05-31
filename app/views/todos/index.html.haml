@@ -1,0 +1,13 @@
+.container#app
+  %h1 My Todos
+  - if @todos.present?
+    %ul
+      - @todos.each do |todo|
+        %li
+          %p
+            = todo.text
+  - else
+    %p Nothing to do yay!
+  = form_for @todo do |f|
+    = f.text_field :text
+    = f.submit
