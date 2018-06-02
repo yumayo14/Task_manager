@@ -4,7 +4,7 @@ class Todo < ApplicationRecord
   has_many :following, through: :todo_from, source: :to_todo
   has_many :followed, through: :todo_to, source: :from_todo
 
-  accepts_nested_attributes_for :todo_from
+  accepts_nested_attributes_for :todo_to
 
   def find_childrens
     todo_childrens = []
