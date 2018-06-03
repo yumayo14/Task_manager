@@ -3,45 +3,13 @@ body {
   font-family: Verdana, sans-serif;
 }
 
-.container {
-  width: 300px;
-  margin: auto;
-}
-
-#app h1 {
-  font-size: 16px;
-  border-bottom: 1px solid #ddd;
-  padding: 16px 0;
-}
-
-#app li {
-  line-height: 1.5;
-}
-
-#app input[type="text"] {
-  padding: 2px;
-}
-
-.command {
-  font-size: 12px;
-  cursor: pointer;
-  color: blue;
-}
-
-/*lesson-8*/
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-/*lesson-10*/
-#app li > span.done {
-  text-decoration: line-through;
-  color: #bbb;
-}
-
 .info {
   color: #bbb;
   font-size: 12px;
   font-weight: normal;
+}
+
+.layer_manage {
+  display: flex;
+  margin-bottom: 40px;
 }
