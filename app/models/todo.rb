@@ -6,12 +6,6 @@ class Todo < ApplicationRecord
 
   accepts_nested_attributes_for :todo_to
 
-  def find_childrens
-    todo_childrens = []
-    self.following.ids.each do |matching_todo_id|
-      todo_childrens = Todo.where(id: matching_todo_id )
-    end
-    return todo_childrens
-  end
+  validates :text, presence: true
 
 end
