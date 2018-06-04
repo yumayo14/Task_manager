@@ -1,28 +1,29 @@
-.container#app
+.container
   %h1 My Todos
   - if @todos.present?
+    .todos
     %ul
       - @todos.each do |todo |
-        %li
-          %p
+        %li.layer_manage
+          %span
             = todo.text
-          %ul
-            - todo.find_childrens.each do |tc|
+          = render partial: "child_form", locals: {todo: @todo, parent: todo}
+          %ul.layer_content
+            - todo.following.each do |tc|
               %li
-                %p
+                %span
                   = tc.text
-              = form_for @todo do |f|
-                = f.text_field :text
-                = f.fields_for :todo_to do |relation|
-                  = relation.hidden_field :from_todo_id, value: tc.id
-                = f.submit
-        = form_for @todo do |f|
-          = f.text_field :text
-          = f.fields_for :todo_to do |relation|
-            = relation.hidden_field :from_todo_id, value: todo.id
-          = f.submit
+                = render partial: "child_form", locals: {todo: @todo, parent: tc}
+              -# = form_for @todo do |cf|
+              -#   %p [ #{tc.text} ]下にTodoを追加する
+              -#   = cf.text_field :text
+              -#   = cf.fields_for :todo_to do |c_relation|
+              -#     = c_relation.hidden_field :from_todo_id, value: tc.id
+              -#   = cf.submit
   - else
     %p Nothing to do yay!
+
   = form_for @todo do |f|
+    %p 最初の階層にTodoを追加する
     = f.text_field :text
     = f.submit
