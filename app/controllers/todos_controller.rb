@@ -1,8 +1,12 @@
 class TodosController < ApplicationController
   def index
     @todos = Todo.all.select{|todo| todo if todo.followed.blank? || todo.followed.ids == todo.id}
+      @todo = Todo.new
+      @todo.todo_to.build
+  end
+
+  def new
     @todo = Todo.new
-    @todo.todo_to.build
   end
 
   def create

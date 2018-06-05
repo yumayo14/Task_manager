@@ -13,7 +13,7 @@
               %li
                 %span
                   = tc.text
-                = render partial: "child_form", locals: {todo: @todo, parent: tc}
+                -# = render partial: "child_form", locals: {todo: @todo, parent: tc}
               -# = form_for @todo do |cf|
               -#   %p [ #{tc.text} ]下にTodoを追加する
               -#   = cf.text_field :text
@@ -23,7 +23,4 @@
   - else
     %p Nothing to do yay!
 
-  = form_for @todo do |f|
-    %p 最初の階層にTodoを追加する
-    = f.text_field :text
-    = f.submit
+  = link_to "新しく一番上のTodoを作成する", new_todo_path
