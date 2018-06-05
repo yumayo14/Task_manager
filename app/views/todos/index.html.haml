@@ -6,7 +6,7 @@
       - @todos.each do |todo |
         %li.layer_manage
           %span
-            = todo.text
+            = sanitize todo.text
           = render partial: "child_form", locals: {todo: @todo, parent: todo}
           %ul.layer_content
             - todo.following.each do |tc|
