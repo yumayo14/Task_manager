@@ -5,22 +5,18 @@
     %ul
       - @todos.each do |todo |
         %li.layer_manage
-          %span
-            = sanitize todo.text
-          = render partial: "child_form", locals: {todo: @todo, parent: todo}
+          .todo
+            = render partial: "todo_content", locals: {todo: todo}
+            .todo_delete
+              = link_to "削除する", todo_path(todo), method: :delete
+            .todo_create_child
+              = render partial: "child_form", locals: {todo: @todo, parent: todo}
           %ul.layer_content
             - todo.following.each do |tc|
               %li
                 %span
-                  = tc.text
-                -# = render partial: "child_form", locals: {todo: @todo, parent: tc}
-              -# = form_for @todo do |cf|
-              -#   %p [ #{tc.text} ]下にTodoを追加する
-              -#   = cf.text_field :text
-              -#   = cf.fields_for :todo_to do |c_relation|
-              -#     = c_relation.hidden_field :from_todo_id, value: tc.id
-              -#   = cf.submit
+                  = tc.title
   - else
     %p Nothing to do yay!
-
+  
   = link_to "新しく一番上のTodoを作成する", new_todo_path
