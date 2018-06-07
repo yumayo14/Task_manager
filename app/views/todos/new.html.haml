@@ -1,0 +1,10 @@
+= form_for @todo do |f|
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :text
+    = f.hidden_field :text, id: "todo_text"
+    %trix-editor{input: "todo_text"}
+  .action
+    = f.submit

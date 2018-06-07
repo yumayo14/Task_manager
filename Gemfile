@@ -58,6 +58,7 @@ gem 'webpacker', github: 'rails/webpacker'
 
 gem 'haml-rails'
 
+gem 'trix'
 
 gem 'pry-doc'
 gem 'pry-byebug'
