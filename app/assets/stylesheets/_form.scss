@@ -1,4 +1,13 @@
-.form_body {
-  width: 100vh;
-  height: 70vh;
+.edit_todo {
+  .field {
+    margin-bottom: 10px;
+    #todo_title {
+      width: 100%;
+      font-size: 120%;
+    }
+  }
+  .action {
+    float: left;
+    margin-right: 2rem;
+  }
 }

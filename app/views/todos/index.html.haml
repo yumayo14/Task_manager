@@ -3,20 +3,22 @@
   - if @todos.present?
     .todos
     %ul
-      - @todos.each do |todo |
+      - @todos.each_with_index do |todo, i |
         %li.layer_manage
           .todo
+            %h1.heading
+              = "Todo#{i + 1}"
             = render partial: "todo_content", locals: {todo: todo}
-            .todo_delete
-              = link_to "削除する", todo_path(todo), method: :delete
             .todo_create_child
               = render partial: "child_form", locals: {todo: @todo, parent: todo}
-          %ul.layer_content
-            - todo.following.each do |tc|
-              %li
-                %span
-                  = tc.title
+          %ul.memos
+            %h1
+              = "Todo#{i + 1}のメモ"
+            - todo.following.each.with_index do |tc, i|
+              %li.each_memo
+                %p
+                  = "#{i + 1}. #{tc.title}"
   - else
     %p Nothing to do yay!
-  
-  = link_to "新しく一番上のTodoを作成する", new_todo_path
+
+  = link_to "新しくTodoを作成する", new_todo_path

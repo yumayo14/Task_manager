@@ -3,8 +3,10 @@
     = f.label :title
     = f.text_field :title
   .field
-    = f.label :text
+    = f.label :content
     = f.hidden_field :text, id: "todo_text[#{todo.id}]"
     %trix-editor{input: "todo_text[#{todo.id}]"}
   .action
-    = f.submit
+    = f.submit "更新する"
+  .action
+    = link_to "削除する", todo_path(todo), method: :delete
