@@ -1,6 +1,6 @@
 = form_for todo do |f|
   = f.text_field :title
-  = f.text_area :text
+  = f.text_field :text
   = f.fields_for :todo_to do |relation|
     = relation.hidden_field :from_todo_id, value: parent.id
-  = f.submit
+  = f.submit "メモを作成"
