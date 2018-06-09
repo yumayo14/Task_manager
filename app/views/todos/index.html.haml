@@ -1,24 +1,22 @@
-.container
-  %h1 My Todos
-  - if @todos.present?
-    .todos
-    %ul
-      - @todos.each_with_index do |todo, i |
-        %li.layer_manage
-          .todo
-            %h1.heading
-              = "Todo#{i + 1}"
-            = render partial: "todo_content", locals: {todo: todo}
-            .todo_create_child
-              = render partial: "child_form", locals: {todo: @todo, parent: todo}
-          %ul.memos
-            %h1
-              = "Todo#{i + 1}のメモ"
-            - todo.following.each.with_index do |tc, i|
-              %li.each_memo
-                %p
-                  = "#{i + 1}. #{tc.title}"
-  - else
-    %p Nothing to do yay!
+%h1 My Todos
+- if @todos.present?
+  %ul.all_todos
+    - @todos.each_with_index do |todo, i |
+      %li.flex_todo_memos
+        .todo
+          %h1.heading
+            = "Todo#{i + 1}"
+          = render partial: "todo_content", locals: {todo: todo}
+          .create_memos
+            = render partial: "memos_form", locals: {memo: @memo, todo: todo}
+        %ul.memos
+          %h1.heading
+            = "Todo#{i + 1}のメモ"
+          - todo.memos.each.with_index do |memo, i|
+            %li.memo
+              %p.content
+                = "#{i + 1}. #{memo.text}"
+- else
+  %p Nothing to do yay!
 
-  = link_to "新しくTodoを作成する", new_todo_path
+= link_to "新しくTodoを作成する", new_todo_path

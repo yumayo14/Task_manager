@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180531104050) do
+ActiveRecord::Schema.define(version: 20180608091236) do
 
-  create_table "todo_relations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "from_todo_id", null: false
-    t.integer "to_todo_id"
+  create_table "memos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "text", null: false
+    t.bigint "todo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["todo_id"], name: "index_memos_on_todo_id"
   end
 
   create_table "todos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

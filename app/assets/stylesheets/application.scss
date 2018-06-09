@@ -1,5 +1,7 @@
 //*require trix
-
+body {
+  font-family: "Open Sans", Arial, serif;
+}
 @import "todos";
 @import "form";
 @import "memos";

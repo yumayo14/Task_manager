@@ -1,8 +1,8 @@
 class TodosController < ApplicationController
   def index
-    @todos = Todo.all.select{|todo| todo if todo.followed.blank? || todo.followed.ids == todo.id}
+    @todos = Todo.all
     @todo = Todo.new
-    @todo.todo_to.build
+    @memo = Memo.new
   end
 
   def new
@@ -25,14 +25,14 @@ class TodosController < ApplicationController
 
   def destroy
     @todo = Todo.find(params[:id])
-    if @todo.todo_from.delete_all && @todo.delete || @todo.delete
+    if @todo.delete
       redirect_to root_path
     end
   end
 
 private
   def todo_params
-    params.require(:todo).permit(:title, :text, todo_to_attributes: [:id, :to_todo_id, :from_todo_id])
+    params.require(:todo).permit(:title, :text)
   end
 
 end
