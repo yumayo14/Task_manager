@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TodoRelationTest < ActiveSupport::TestCase
+class MemosControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
