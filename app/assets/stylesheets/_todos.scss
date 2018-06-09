@@ -3,14 +3,10 @@ body {
   font-family: "Open Sans", Arial, serif;
 }
 
-.info {
-  color: #bbb;
-  font-size: 12px;
-  font-weight: normal;
-}
-
-.layer_manage {
+.flex_todo_memos {
   display: flex;
   margin-bottom: 40px;
-
+  .todo {
+    width: 65%;
+  }
 }
