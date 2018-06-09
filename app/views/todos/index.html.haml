@@ -10,14 +10,14 @@
               = "Todo#{i + 1}"
             = render partial: "todo_content", locals: {todo: todo}
             .todo_create_child
-              = render partial: "child_form", locals: {todo: @todo, parent: todo}
+              = render partial: "memos_form", locals: {memo: @memo}
           %ul.memos
             %h1
               = "Todo#{i + 1}のメモ"
-            - todo.following.each.with_index do |tc, i|
+            - todo.memos.each.with_index do |memo, i|
               %li.each_memo
                 %p
-                  = "#{i + 1}. #{tc.title}"
+                  = "#{i + 1}. #{memo.text}"
   - else
     %p Nothing to do yay!
 
