@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180608091236) do
+ActiveRecord::Schema.define(version: 20180611102914) do
 
   create_table "memos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "text", null: false
     t.bigint "todo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "done", default: false, null: false
     t.index ["todo_id"], name: "index_memos_on_todo_id"
   end
 
