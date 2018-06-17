@@ -1,6 +1,10 @@
 class TodosController < ApplicationController
   def index
     @todos = Todo.all
+    respond_to do |format|
+      format.html
+      format.json
+    end
     @todo = Todo.new
     @memo = Memo.new
   end
@@ -25,7 +29,7 @@ class TodosController < ApplicationController
 
   def destroy
     @todo = Todo.find(params[:id])
-    if @todo.delete
+    if @todo.delete && @todo.memos.delete_all || @todo.delete
       redirect_to root_path
     end
   end
